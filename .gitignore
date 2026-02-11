@@ -10,10 +10,16 @@ __pycache__/
 # Jupyter
 .ipynb_checkpoints/
 Modelingv1.ipynb
-# Data & models (raw & generated)
-RawData/
-CleanedData/
-outputs/ 
+
+# VS Code 
+.vscode/
+*.code-workspace
+
+# Data - IGNORE all raw data
+data/
+
+# Models - IGNORE all model files
+models/
 
 # Environment variables
 .env
