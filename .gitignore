@@ -15,10 +15,10 @@ Modelingv1.ipynb
 .vscode/
 
 # Data - IGNORE all raw data
-data/
+*.csv
 
 # Models - IGNORE all model files
-models/
+*.png
 
 # Environment variables
 .env
