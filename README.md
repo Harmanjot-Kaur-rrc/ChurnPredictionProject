@@ -44,20 +44,46 @@ Dataset Link: https://www.kaggle.com/datasets/muhammadshahidazeem/customer-churn
     └── train_pipeline.py     <- End-to-end training and evaluation pipeline
 ```
 
-### How to Run the Project
+## How to Run the Project
+
 1. **Clone Repository**
-  git clone <your-repo-url>
-  cd ChurnPredictionProject
+   ```bash
+   git clone <repository-url>
+   cd ChurnPredictionProject
+   ```
 
-2. **Create Virtual Environment**
-  python -m venv venv
-  venv\Scripts\activate     # Windows
+2. **Set Up Virtual Environment**
+   
+   Create virtual environment:
+   ```bash
+   python -m venv venv
+   ```
+   
+   Activate it:
+   
+   *Windows:*
+   ```bash
+   venv\Scripts\activate
+   ```
+   
+   *macOS/Linux:*
+   ```bash
+   source venv/bin/activate
+   ```
 
-4. **Install Dependencies**
-  pip install -r requirements.txt
-  
-5. **Run Training Pipeline**
-  python -m src.train_pipeline
+3. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Run Training Pipeline**
+   ```bash
+   python -m src.train_pipeline
+   ```
+   *or*
+   ```bash
+   python src/train_pipeline.py
+   ```
 
 
 This will:
