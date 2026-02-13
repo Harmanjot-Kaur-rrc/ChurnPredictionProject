@@ -27,10 +27,9 @@ jobs:
       run: |
         flake8 src
 
-    - name: Check code formatting with black
-      run:
-        black --check Customer-Churn-Prediction-/src
-
+    - name: Autoformat code
+      run: 
+        black src
 
     - name: Run tests
       run: |
