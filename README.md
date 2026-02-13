@@ -8,34 +8,83 @@ Dataset Link: https://www.kaggle.com/datasets/muhammadshahidazeem/customer-churn
 
 
 ### Project Structure
-├── README.md
-├── requirements.txt
-├── .gitignore
-│
-├── data/
-│   ├── raw/                 <- Original dataset files
-│   └── processed/           <- Cleaned dataset used for modeling
-│
-├── notebooks/               <- Exploratory notebooks (EDA & experimentation)
-│
-├── models/                  <- Saved visualizations and outputs
-│
-└── src/
-    ├── __init__.py
-    └── train_pipeline.py    <- End-to-end 
-    training and evaluation pipeline
 
-### How to Run the Project
+```
+├── README.md                    <- The top-level README for developers using this project
+├── requirements.txt             <- The requirements file for reproducing the environment
+├── .gitignore                   <- Git ignore file
+│
+├── data/                        <- All dataset files
+│   ├── raw/                    <- Original, immutable dataset files
+│   └── processed/              <- Cleaned dataset used for modeling
+│
+├── notebooks/                   <- Jupyter notebooks for EDA and experimentation
+│
+├── models/                     <- Saved model files, visualizations, and evaluation outputs
+│
+└── src/                        <- Source code for use in this project
+    ├── __init__.py            <- Makes src a Python module
+    │
+    ├── data/                  <- Scripts to load and process data
+    │   └── load_data.py      <- Data loading and cleaning functions
+    │
+    ├── features/             <- Scripts to turn raw data into features for modeling
+    │   └── build_features.py <- Feature engineering and transformation
+    │
+    ├── models/               <- Scripts to train models and make predictions
+    │   ├── train_model.py    <- Model training scripts
+    │   └── predict_model.py  <- Prediction functions
+    │
+    ├── evaluation/           <- Scripts to evaluate model performance
+    │   └── evaluate_model.py <- Metrics and evaluation functions
+    │
+    ├── visualization/        <- Scripts to create visualizations
+    │   └── visualize.py     <- Plotting and visualization functions
+    │
+    └── train_pipeline.py     <- End-to-end training and evaluation pipeline
+```
+
+## How to Run the Project
+
 1. **Clone Repository**
-- git clone <your-repo-url>
-- cd ChurnPredictionProject
-2. **Create Virtual Environment**
-- python -m venv venv
-- venv\Scripts\activate     # Windows
+   ```bash
+   git clone <repository-url>
+   cd ChurnPredictionProject
+   ```
+
+2. **Set Up Virtual Environment**
+   
+   Create virtual environment:
+   ```bash
+   python -m venv venv
+   ```
+   
+   Activate it:
+   
+   *Windows:*
+   ```bash
+   venv\Scripts\activate
+   ```
+   
+   *macOS/Linux:*
+   ```bash
+   source venv/bin/activate
+   ```
+
 3. **Install Dependencies**
-- pip install -r requirements.txt
+   ```bash
+   pip install -r requirements.txt
+   ```
+
 4. **Run Training Pipeline**
-- python -m src.train_pipeline
+   ```bash
+   python -m src.train_pipeline
+   ```
+   *or*
+   ```bash
+   python src/train_pipeline.py
+   ```
+
 
 This will:
 
