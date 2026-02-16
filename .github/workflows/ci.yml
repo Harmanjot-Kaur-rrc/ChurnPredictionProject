@@ -9,42 +9,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repo
-      - name: Checkout code
+      - name: Checkout repo
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      # Set up Python 3.11
-      - name: Set up Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: 3.11
+          cache: "pip"
 
-      # Cache pip packages for speed
-      - name: Cache pip
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      # Install dependencies
-      - name: Install dependencies
+      - name: Upgrade pip & install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest flake8 black
 
-      # Lint code with flake8
-      - name: Lint with flake8
+      - name: Lint
         run: flake8 src
 
-      # Check formatting with black
-      - name: Check formatting with Black
+      - name: Check formatting
         run: black --check src
 
-      # Run tests with pytest
       - name: Run tests
+        run: pytest
+
 
