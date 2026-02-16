@@ -21,8 +21,7 @@ from sklearn.metrics import (
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import (
     RandomForestClassifier,
-    GradientBoostingClassifier,
-    VotingClassifier,
+    GradientBoostingClassifier
 )
 from sklearn.linear_model import LogisticRegression
 from sklearn.neural_network import MLPClassifier
