@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check Python version
+        run: python --version
+
       - name: Checkout repo
         uses: actions/checkout@v3
         with:
