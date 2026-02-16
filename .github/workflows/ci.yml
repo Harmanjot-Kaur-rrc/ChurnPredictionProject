@@ -34,10 +34,7 @@ jobs:
         black --check src
 
     - name: Run tests
-      env:
-        PYTHONPATH: ${{ github.workspace }}
       run: |
-        export PYTHONPATH=.
-        pytest
+        python -m pytest
 
 
