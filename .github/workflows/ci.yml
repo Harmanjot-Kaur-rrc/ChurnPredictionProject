@@ -34,7 +34,8 @@ jobs:
         black --check src
 
     - name: Run tests
-      working-directory: ChurnPredictionProject
+      env:
+        PYTHONPATH: ${{ github.workspace }}
       run: |
         export PYTHONPATH=.
         pytest
