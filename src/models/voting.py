@@ -15,4 +15,3 @@ def build_voting(trained_models):
         voting="soft",
         weights=[1, 1, 1, 2],
     )
-
