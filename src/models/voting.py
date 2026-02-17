@@ -1,6 +1,5 @@
 from sklearn.ensemble import VotingClassifier
 
-
 def build_voting(trained_models):
     estimators = [
         ("log", trained_models["Logistic"].best_estimator_),
