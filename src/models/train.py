@@ -7,7 +7,6 @@ from xgboost import XGBClassifier
 
 
 def train_models(X_train, y_train, preprocessor):
-
     models = {}
 
     def grid(pipe, params):

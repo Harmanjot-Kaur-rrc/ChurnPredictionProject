@@ -4,7 +4,6 @@ from sklearn.pipeline import Pipeline
 
 
 def build_preprocessor():
-
     numeric_features = [
         "Age",
         "Tenure",

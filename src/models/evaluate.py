@@ -9,7 +9,6 @@ from sklearn.metrics import (
 
 
 def evaluate_model(model, X, y):
-
     y_pred = model.predict(X)
     y_proba = model.predict_proba(X)[:, 1]
 

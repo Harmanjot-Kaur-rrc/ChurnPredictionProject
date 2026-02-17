@@ -2,7 +2,6 @@ from sklearn.ensemble import VotingClassifier
 
 
 def build_voting(trained_models):
-
     estimators = [
         ("log", trained_models["Logistic"].best_estimator_),
         ("rf", trained_models["RandomForest"].best_estimator_),
