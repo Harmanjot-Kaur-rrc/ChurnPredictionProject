@@ -5,7 +5,6 @@ from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.neural_network import MLPClassifier
 from xgboost import XGBClassifier
  
- 
 def train_models(X_train, y_train, preprocessor):
  
     models = {}
