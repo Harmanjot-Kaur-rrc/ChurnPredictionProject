@@ -1,10 +1,5 @@
 from sklearn.ensemble import VotingClassifier
-<<<<<<< HEAD
-
-=======
  
- 
->>>>>>> c3ef9a4760b0bb7f096cf15f5ff9acc26640b276
 def build_voting(trained_models):
  
     estimators = [
