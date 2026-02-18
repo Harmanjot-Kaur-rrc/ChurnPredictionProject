@@ -6,10 +6,10 @@
 # without needing to import anything.
 #
 # Fixtures moved here from:
-#   test_make_dataset.py   →  sample_df
-#   test_build_features.py →  sample_X
-#   test_evaluate.py       →  sample_X, sample_y, trained_pipeline
-#   test_voting.py         →  sample_X, sample_y, fake_trained_models
+#   test_make_dataset.py   :  sample_df
+#   test_build_features.py : sample_X
+#   test_evaluate.py       :  sample_X, sample_y, trained_pipeline
+#   test_voting.py         : sample_X, sample_y, fake_trained_models
 
 import pytest
 import pandas as pd

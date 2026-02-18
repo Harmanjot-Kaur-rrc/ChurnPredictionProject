@@ -1,7 +1,7 @@
 # tests/test_build_features.py
 #
 # What this file tests:
-#   src/features/make_features.py  →  build_preprocessor()
+#   src/features/make_features.py :  build_preprocessor()
 #
 # These tests make sure our preprocessing step correctly
 # transforms raw data into a format models can actually use.
@@ -75,7 +75,7 @@ class TestBuildPreprocessor:
 
     def test_unseen_categories_do_not_cause_error(self, sample_X):
         """
-        In production, your model might see a gender value it never
+        In production, our model might see a gender value it never
         saw during training. handle_unknown='ignore' in your OneHotEncoder
         should handle this gracefully instead of crashing.
         We simulate this by fitting on normal data, then transforming
