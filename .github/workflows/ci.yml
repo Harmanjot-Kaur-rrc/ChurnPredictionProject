@@ -45,8 +45,7 @@ jobs:
 
       - name: Security check with Bandit
         run: |
-        bandit -r src -ll
-
+          bandit -r src -ll
 
       - name: Run tests
         run: |
