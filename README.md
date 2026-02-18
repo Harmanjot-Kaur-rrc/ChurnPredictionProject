@@ -21,25 +21,29 @@ Dataset Link: https://www.kaggle.com/datasets/muhammadshahidazeem/customer-churn
 ├── notebooks/                   <- Jupyter notebooks for EDA and experimentation
 │
 ├── models/                     <- Saved model files, visualizations, and evaluation outputs
+├── tests/  
+│    └── conftest.py
+│    └── test_features.py
+│    └── test_make_dataset.py
+│    └── test_evaluate.py
+│    └── test_voting.py
+│
+├── .github/workflows
+│    └── ci.yml
 │
 └── src/                        <- Source code for use in this project
     ├── __init__.py            <- Makes src a Python module
     │
     ├── data/                  <- Scripts to load and process data
-    │   └── load_data.py      <- Data loading and cleaning functions
+    │   └── make_dataset.py      <- Data loading and cleaning functions
     │
     ├── features/             <- Scripts to turn raw data into features for modeling
-    │   └── build_features.py <- Feature engineering and transformation
+    │   └── make_features.py <- Feature engineering and transformation
     │
     ├── models/               <- Scripts to train models and make predictions
-    │   ├── train_model.py    <- Model training scripts
-    │   └── predict_model.py  <- Prediction functions
-    │
-    ├── evaluation/           <- Scripts to evaluate model performance
-    │   └── evaluate_model.py <- Metrics and evaluation functions
-    │
-    ├── visualization/        <- Scripts to create visualizations
-    │   └── visualize.py     <- Plotting and visualization functions
+    │   ├── train.py    <- Model training scripts
+    │   └── voting.py  <- Prediction functions
+    │   └── evaluate.py <- Metrics and evaluation functions
     │
     └── train_pipeline.py     <- End-to-end training and evaluation pipeline
 ```
