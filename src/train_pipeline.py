@@ -31,6 +31,16 @@ from xgboost import XGBClassifier
 
 warnings.filterwarnings("ignore", category=ConvergenceWarning)
 
+# -----------------------------
+# MODEL ID MAPPING
+# -----------------------------
+MODEL_ID_MAP = {
+    "Logistic": "logreg",
+    "RandomForest": "rf",
+    "GradientBoosting": "gb",
+    "XGBoost": "xgb",
+    "MLP": "mlp",
+}
 # ---------------------------------------------------
 # MAIN PIPELINE
 # ---------------------------------------------------
@@ -164,7 +174,10 @@ def main():
 
     print("Training models...\n")
 
+    trained_models = {}
+
     for name, model in models.items():
+        print(f" Training {name}...")
         pipeline = Pipeline([("preprocessor", preprocessor), ("model", model)])
 
         pipeline.fit(X_train, y_train)
@@ -183,7 +196,14 @@ def main():
             }
         )
 
-        models[name] = pipeline
+        # SAVE EVERY MODEL
+        model_id = MODEL_ID_MAP[name]
+        model_path = f"models/{model_id}.pkl"
+        joblib.dump(pipeline, model_path)
+
+        print(f" Saved {name} : {model_path}")
+
+        trained_models[name] = pipeline
 
     results_df = pd.DataFrame(results).sort_values(by="ROC-AUC", ascending=False)
 
@@ -192,13 +212,33 @@ def main():
     print(results_df.to_string(index=False))
 
     best_model_name = results_df.iloc[0]["Model"]
-    best_model = models[best_model_name]
+    best_model = trained_models[best_model_name]
 
     print(f"\n Best Model: {best_model_name}")
     
     joblib.dump(best_model, "models/best_model.pkl")
     print(" Best model saved to models/best_model.pkl")
 
+    import json
+
+    registry = []
+
+    for _, row in results_df.iterrows():
+        registry.append(
+        {
+            "model_id": MODEL_ID_MAP[row["Model"]],
+            "model_name": row["Model"],
+            "roc_auc": round(row["ROC-AUC"], 4),
+            "accuracy": round(row["Accuracy"], 4),
+            "f1": round(row["F1"], 4),
+            "artifact_path": f"models/{MODEL_ID_MAP[row['Model']]}.pkl",
+        }
+    )
+
+    with open("models/model_registry.json", "w") as f:
+        json.dump(registry, f, indent=4)
+
+    print(" Model registry saved to models/model_registry.json")
     # ---------------------------------------------------
     # CONFUSION MATRIX
     # ---------------------------------------------------

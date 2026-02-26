@@ -1,0 +1,42 @@
+[
+    {
+        "model_id": "xgb",
+        "model_name": "XGBoost",
+        "roc_auc": 0.953,
+        "accuracy": 0.9338,
+        "f1": 0.9434,
+        "artifact_path": "models/xgb.pkl"
+    },
+    {
+        "model_id": "rf",
+        "model_name": "RandomForest",
+        "roc_auc": 0.9527,
+        "accuracy": 0.9352,
+        "f1": 0.9447,
+        "artifact_path": "models/rf.pkl"
+    },
+    {
+        "model_id": "mlp",
+        "model_name": "MLP",
+        "roc_auc": 0.9527,
+        "accuracy": 0.9359,
+        "f1": 0.9453,
+        "artifact_path": "models/mlp.pkl"
+    },
+    {
+        "model_id": "gb",
+        "model_name": "GradientBoosting",
+        "roc_auc": 0.9509,
+        "accuracy": 0.9216,
+        "f1": 0.9321,
+        "artifact_path": "models/gb.pkl"
+    },
+    {
+        "model_id": "logreg",
+        "model_name": "Logistic",
+        "roc_auc": 0.9091,
+        "accuracy": 0.848,
+        "f1": 0.8612,
+        "artifact_path": "models/logreg.pkl"
+    }
+]

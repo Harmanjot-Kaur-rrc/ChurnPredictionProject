@@ -18,6 +18,8 @@ class CustomerData(BaseModel):
 
     model_config = ConfigDict(validate_by_name=True)
 
+class PredictionRequest(CustomerData):
+    model_id: str
 class PredictionResponse(BaseModel):
     churn_prediction: int
     churn_probability: float
