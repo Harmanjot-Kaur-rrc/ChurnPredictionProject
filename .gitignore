@@ -19,6 +19,7 @@ Modelingv1.ipynb
 
 # Models - IGNORE all model files
 *.png
+*.pkl
 
 # Environment variables
 .env
