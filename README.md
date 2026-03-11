@@ -44,7 +44,14 @@ Dataset Link: https://www.kaggle.com/datasets/muhammadshahidazeem/customer-churn
     │   ├── train.py    <- Model training scripts
     │   └── voting.py  <- Prediction functions
     │   └── evaluate.py <- Metrics and evaluation functions
-    │
+├── app/                             <- FastAPI application
+│   ├── main.py                      <- API routes, middleware, exception handlers
+│   ├── auth.py                      <- API key authentication + role-based authorization
+│   ├── config.py                    <- Settings loaded from .env via pydantic-settings
+│   ├── schemas.py                   <- Request/response models with full validation
+│   ├── model_loader.py              <- Startup model cache
+│   ├── middleware.py                <- Request logging + X-Request-ID tracing
+│   └── ui.py                        <- Streamlit interactive UI
     └── train_pipeline.py     <- End-to-end training and evaluation pipeline
 ```
 
@@ -79,8 +86,14 @@ Dataset Link: https://www.kaggle.com/datasets/muhammadshahidazeem/customer-churn
    ```bash
    pip install -r requirements.txt
    ```
-
-4. **Run Training Pipeline**
+4. **Set up environment variables**
+   # Windows
+   ```copy .env.example .env
+   ```
+   # macOS/Linux
+   ```cp .env.example .env
+   ```
+5. **Run Training Pipeline**
    ```bash
    python -m src.train_pipeline
    ```
@@ -88,9 +101,14 @@ Dataset Link: https://www.kaggle.com/datasets/muhammadshahidazeem/customer-churn
    ```bash
    python src/train_pipeline.py
    ```
+6. **Start the API**
+   ```uvicorn app.main:app --reload
+   ```
+7. **Start the UI**
+   ```streamlit run app/ui.py
+   ```
 
-
-This will:
+Train pipeline will:
 
 - Generate EDA visualizations
 
@@ -105,7 +123,7 @@ This will:
 ### Output Artifacts
 
 The models/ directory will contain:
-
+- model .pkls
 - churn_distribution.png
 - numerical_distributions.png
 - categorical_distributions.png
@@ -122,12 +140,6 @@ The models/ directory will contain:
 - No hard-coded paths outside project structure
 
 - Pipeline executable via module (python -m)
-
-### Future Improvements
-
-- CI/CD integration
-
-- Deployment-ready API endpoint
 
 ### License
 

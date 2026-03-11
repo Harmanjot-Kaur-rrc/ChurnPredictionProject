@@ -5,13 +5,15 @@ venv/
 
 # Python cache
 __pycache__/
-
+*.pyc
+*.pyo
+*.pyd
 
 # Jupyter
 .ipynb_checkpoints/
 Modelingv1.ipynb
 
-# VS Code 
+# VS Code
 .vscode/
 
 # Data - IGNORE all raw data
@@ -20,10 +22,18 @@ Modelingv1.ipynb
 # Models - IGNORE all model files
 *.png
 *.pkl
+models/model_registry.json
 
 # Environment variables
 .env
 
+# API / runtime
+*.log
+.env.local
+
 # OS files
 .DS_Store
 Thumbs.db
+
+# batch testing in progress
+/scripts
