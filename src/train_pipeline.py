@@ -215,7 +215,6 @@ def main():
     best_model = trained_models[best_model_name]
 
     print(f"\n Best Model: {best_model_name}")
-    
     joblib.dump(best_model, "models/best_model.pkl")
     print(" Best model saved to models/best_model.pkl")
 
@@ -225,15 +224,15 @@ def main():
 
     for _, row in results_df.iterrows():
         registry.append(
-        {
-            "model_id": MODEL_ID_MAP[row["Model"]],
-            "model_name": row["Model"],
-            "roc_auc": round(row["ROC-AUC"], 4),
-            "accuracy": round(row["Accuracy"], 4),
-            "f1": round(row["F1"], 4),
-            "artifact_path": f"models/{MODEL_ID_MAP[row['Model']]}.pkl",
-        }
-    )
+            {
+                "model_id": MODEL_ID_MAP[row["Model"]],
+                "model_name": row["Model"],
+                "roc_auc": round(row["ROC-AUC"], 4),
+                "accuracy": round(row["Accuracy"], 4),
+                "f1": round(row["F1"], 4),
+                "artifact_path": f"models/{MODEL_ID_MAP[row['Model']]}.pkl",
+            }
+        )
 
     with open("models/model_registry.json", "w") as f:
         json.dump(registry, f, indent=4)
