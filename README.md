@@ -105,7 +105,7 @@ Dataset Link: https://www.kaggle.com/datasets/muhammadshahidazeem/customer-churn
    ```uvicorn app.main:app --reload
    ```
 7. **Start the UI**
-   ```streamlit run app/ui.py
+   ```python -m streamlit run app/ui.py
    ```
 
 Train pipeline will:
