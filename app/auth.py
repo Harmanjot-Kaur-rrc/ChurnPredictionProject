@@ -103,7 +103,7 @@ def authenticate(
             },
         )
 
-    # ── Role → allowed models from DB ──────────────────────────────────────
+    # ── Role: allowed models from DB ──────────────────────────────────────
     allowed_models = [
         row.model_id
         for row in db.query(RoleModelAccess).filter_by(role=user.role).all()

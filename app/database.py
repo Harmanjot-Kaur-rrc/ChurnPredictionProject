@@ -78,8 +78,8 @@ class ModelVersion(Base):
     """
     One row per trained / retrained version of each model_id.
     version_number increments per model_id (1, 2, 3…).
-    is_active=True  → this version is currently serving predictions.
-    artifact_path   → versioned .pkl path, e.g. models/rf_v3.pkl
+    is_active=True: this version is currently serving predictions.
+    artifact_path: versioned .pkl path, e.g. models/rf_v3.pkl
     """
     __tablename__ = "model_versions"
     id             = Column(Integer, primary_key=True, index=True)
@@ -99,7 +99,7 @@ class ModelVersion(Base):
 class BatchJob(Base):
     """
     One row per batch prediction request.
-    result_path → CSV written when status=done.
+    result_path: CSV written when status=done.
     """
     __tablename__ = "batch_jobs"
     id             = Column(Integer, primary_key=True, index=True)

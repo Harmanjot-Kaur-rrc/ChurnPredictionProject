@@ -2,7 +2,7 @@
 auth_routes.py — User-facing auth endpoints.
 
   POST /v1/auth/signup          register a new account (role defaults to 'guest')
-  POST /v1/auth/login           verify password → return active API keys summary
+  POST /v1/auth/login           verify password, return active API keys summary
   POST /v1/auth/keys            generate a new time-limited API key
   GET  /v1/auth/keys            list your active keys (prefix + expiry, never raw)
   DELETE /v1/auth/keys/{prefix} revoke a key by its prefix
@@ -74,7 +74,7 @@ class LoginResponse(BaseModel):
 
 class NewKeyResponse(BaseModel):
     message: str
-    raw_key: str = Field(..., description="Store this — shown ONCE.")
+    raw_key: str = Field(..., description="Store this - shown ONCE.")
     prefix: str
     expires_at: str
 
@@ -123,7 +123,7 @@ def _require_admin(db: Session, username: str) -> User:
 def signup(body: SignupRequest, db: Session = Depends(get_db)):
     """
     Creates a new user with role='guest'.
-    Passwords are bcrypt-hashed before storage — plaintext is never persisted.
+    Passwords are bcrypt-hashed before storage, plaintext is never persisted.
     """
     if db.query(User).filter_by(username=body.username).first():
         raise HTTPException(status_code=409, detail="Username already taken.")
@@ -171,9 +171,9 @@ def login(body: LoginRequest, db: Session = Depends(get_db)):
 def create_key(body: LoginRequest, db: Session = Depends(get_db)):
     """
     Password-gated key issuance. TTL is set dynamically based on the user's role:
-      - admin   → 365 days (configurable via API_KEY_TTL_ADMIN env var)
-      - analyst → 90 days
-      - guest   → 30 days
+      - admin   : 365 days (configurable via API_KEY_TTL_ADMIN env var)
+      - analyst : 90 days
+      - guest   : 30 days
 
     The raw key is returned **once** — it is not stored. Only a SHA-256 hash
     is persisted so a DB breach cannot expose live keys.
@@ -266,7 +266,7 @@ def set_user_role(
     """
     Role injection is guarded:
       1. Only admins can call this endpoint.
-      2. Role value is validated against a whitelist — arbitrary strings rejected.
+      2. Role value is validated against a whitelist, arbitrary strings rejected.
       3. After role change, existing keys retain old expiry; new keys use new role TTL.
     """
     admin = db.query(User).filter_by(username=admin_username).first()

@@ -2,7 +2,7 @@
 security.py — Cryptographic helpers.
 
   - Passwords : bcrypt via passlib
-  - API keys  : secrets.token_urlsafe → SHA-256 stored in DB
+  - API keys  : secrets.token_urlsafe : SHA-256 stored in DB
   - Key expiry: configurable TTL per role (default 30 days)
 """
 from __future__ import annotations
